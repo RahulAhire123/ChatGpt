@@ -67,7 +67,7 @@ const handleSubmit = async (e) => {
   chatContainer.scrollTop = chatContainer.scrollHeight;
   const messageDiv = document.getElementById(uniqueId)
   loader(messageDiv)
-  const response = await fetch('http://https://chatgpt-ao3b.onrender.com/', {
+  const response = await fetch('https://chatgpt-ao3b.onrender.com/', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -75,27 +75,27 @@ const handleSubmit = async (e) => {
     body: JSON.stringify({
         prompt: data.get('prompt')
     })
-    })
-    clearInterval(loadInterval)
-    messageDiv.innerHTML = " "
+})
 
-    if (response.ok) {
-        const data = await response.json();
-        const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
+clearInterval(loadInterval)
+messageDiv.innerHTML = " "
 
-        typeText(messageDiv, parsedData)
-    } else {
-        const err = await response.text()
+if (response.ok) {
+    const data = await response.json();
+    const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
 
-        messageDiv.innerHTML = "Something went wrong"
-        alert(err)
-    }
+    typeText(messageDiv, parsedData)
+} else {
+    const err = await response.text()
+
+    messageDiv.innerHTML = "Something went wrong"
+    alert(err)
 }
-
+}
 
 form.addEventListener('submit', handleSubmit)
 form.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13) {
-        handleSubmit(e)
-    }
+if (e.keyCode === 13) {
+    handleSubmit(e)
+}
 })
