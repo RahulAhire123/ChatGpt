@@ -86,7 +86,7 @@ const handleSubmit = async (e) => {
     // messageDiv.innerHTML = "..."
     loader(messageDiv)
 
-    const response = await fetch('https://chatgpt-ao3b.onrender.com/', {
+    const response = await fetch('https://chatgpt-project-aiii.onrender.com/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
